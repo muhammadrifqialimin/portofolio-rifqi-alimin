@@ -9,33 +9,38 @@ import Particles from "./components/Particles";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Projects from "./components/Projects"; // Asumsi kamu sudah buat seperti cara di atas
+import Projects from "./components/Projects";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
+  // State untuk data dari Firebase
   const [projects, setProjects] = useState([]);
   const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Data Statis (About Me)
   const aboutData = {
     name: "Muhammad Rifqi Alimin",
     title: "Full Stack Developer",
     description:
       "Saya adalah Full Stack Developer yang ahli dalam ekosistem JavaScript dan Kotlin. Berfokus pada solusi berdampak seperti platform edukasi Nusantara Cerdas (SDG 4) dan aplikasi MabarFokus, saya menggabungkan efisiensi backend dengan antarmuka responsif. Dengan minat pada inovasi IoT, saya berkomitmen menghadirkan produk teknologi yang modern, berkualitas, dan solutif.",
     bio: "Berdedikasi untuk menjembatani ide kompleks menjadi solusi digital yang fungsional dan berdampak luas",
-    image: "../public/images/image.png",
+
+    // PERBAIKAN: Path gambar menggunakan "/" agar terbaca di Vercel (Folder Public)
+    image: "/images/image.png",
+
     cvUrl:
       "https://drive.google.com/file/d/1dtHzgI-36FPh51Tg6EcF4seTB47z8std/view?usp=sharing",
     technologies: [
-      "Kotlin", // Sesuai 'Android Development' di CV
-      "React.js", // Sesuai 'Web Architecture' di CV
-      "Node.js", // Sesuai 'Web Architecture' di CV
-      "MySQL", // Sesuai 'Relational Databases' di CV
-      "Firebase", // Sesuai 'Firebase Integration' di CV
-      "Git & GitHub", // Sesuai di CV
-      "RESTful API", // Tambahan dari CV
+      "Kotlin",
+      "React.js",
+      "Node.js",
+      "MySQL",
+      "Firebase",
+      "Git & GitHub",
+      "RESTful API",
       "TypeScript",
       "Tailwind CSS",
       "Sequelize",
@@ -43,6 +48,7 @@ function App() {
     ],
   };
 
+  // Data Statis (Contact)
   const contactData = {
     github: "https://github.com/muhammadrifqialimin",
     linkedin: "https://www.linkedin.com/in/muhammad-rifqi-alimin-787363366/",
@@ -50,6 +56,7 @@ function App() {
       "https://mail.google.com/mail/?view=cm&fs=1&to=rifqyalimin25@gmail.com",
   };
 
+  // Fetch Data dari Firebase saat website dibuka
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -72,6 +79,7 @@ function App() {
     fetchData();
   }, []);
 
+  // Konfigurasi Animasi Framer Motion
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
@@ -84,33 +92,49 @@ function App() {
   return (
     <div className="app-container">
       <Particles />
+
+      {/* Navbar menerima nama untuk logo */}
       <Navbar name={aboutData.name} />
-      <Hero fadeInUp={fadeInUp} />
 
-      <About
-        data={aboutData}
-        fadeInUp={fadeInUp}
-        staggerContainer={staggerContainer}
-      />
+      {/* --- BAGIAN PENTING: SECTION DENGAN ID --- */}
+      {/* Navbar mencari ID ini ("hero", "about", dll) untuk tujuan scroll */}
 
-      <Projects
-        projects={projects}
-        loading={loading}
-        fadeInUp={fadeInUp}
-        staggerContainer={staggerContainer}
-      />
+      <section id="hero">
+        <Hero fadeInUp={fadeInUp} />
+      </section>
 
-      <Certificates
-        certificates={certificates}
-        fadeInUp={fadeInUp}
-        staggerContainer={staggerContainer}
-      />
+      <section id="about">
+        <About
+          data={aboutData}
+          fadeInUp={fadeInUp}
+          staggerContainer={staggerContainer}
+        />
+      </section>
 
-      <Contact
-        contactData={contactData}
-        fadeInUp={fadeInUp}
-        staggerContainer={staggerContainer}
-      />
+      <section id="projects">
+        <Projects
+          projects={projects}
+          loading={loading}
+          fadeInUp={fadeInUp}
+          staggerContainer={staggerContainer}
+        />
+      </section>
+
+      <section id="certificates">
+        <Certificates
+          certificates={certificates}
+          fadeInUp={fadeInUp}
+          staggerContainer={staggerContainer}
+        />
+      </section>
+
+      <section id="contact">
+        <Contact
+          contactData={contactData}
+          fadeInUp={fadeInUp}
+          staggerContainer={staggerContainer}
+        />
+      </section>
 
       <Footer name={aboutData.name} contactData={contactData} />
     </div>
