@@ -17,7 +17,7 @@ function Hero({ fadeInUp }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Hi, Saya <span className="highlight">Muhammad Rifqi Alimin</span>
+          Hi, I'm <span className="highlight">Muhammad Rifqi Alimin</span>
         </motion.h1>
         <motion.p
           className="hero-subtitle"
@@ -25,8 +25,8 @@ function Hero({ fadeInUp }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          Full-stack Developer yang fokus membangun solusi digital inovatif
-          melalui kode dan kreativitas.
+          A Full-stack Developer focused on building innovative digital
+          solutions through code and creativity.
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
@@ -34,7 +34,7 @@ function Hero({ fadeInUp }) {
           transition={{ delay: 0.8 }}
         >
           <a href="#projects" className="cta-button">
-            Explore My Portofolio
+            Explore My Portfolio
             <svg
               className="arrow-icon"
               viewBox="0 0 24 24"

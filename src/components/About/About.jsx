@@ -15,8 +15,7 @@ function About({ data, fadeInUp, staggerContainer }) {
           <h2 className="section-title">About Me</h2>
           <div className="section-divider"></div>
           <p className="section-description">
-            Eksplorasi rekam jejak profesional dan hasil karya saya di bawah
-            ini.
+            Explore my professional journey and portfolio of work below.
           </p>
         </motion.div>
 

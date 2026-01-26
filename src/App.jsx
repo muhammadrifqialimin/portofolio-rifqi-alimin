@@ -25,8 +25,8 @@ function App() {
     name: "Muhammad Rifqi Alimin",
     title: "Full Stack Developer",
     description:
-      "Saya adalah Full Stack Developer yang ahli dalam ekosistem JavaScript dan Kotlin. Berfokus pada solusi berdampak seperti platform edukasi Nusantara Cerdas (SDG 4) dan aplikasi MabarFokus, saya menggabungkan efisiensi backend dengan antarmuka responsif. Dengan minat pada inovasi IoT, saya berkomitmen menghadirkan produk teknologi yang modern, berkualitas, dan solutif.",
-    bio: "Berdedikasi untuk menjembatani ide kompleks menjadi solusi digital yang fungsional dan berdampak luas",
+      "As a Full Stack Developer, I combine robust technical skills in JavaScript and Kotlin with a creative approach to product development. By viewing challenges from diverse perspectives, I transform innovative concepts into functional digital solutions. Dedicated to efficiency and quality, my goal is to build modern technology that delivers real, meaningful value to its users.",
+    bio: "Dedicated to bridging complex ideas into functional, high-impact digital solutions.",
 
     // PERBAIKAN: Path gambar menggunakan "/" agar terbaca di Vercel (Folder Public)
     image: "/images/image.png",
@@ -37,13 +37,12 @@ function App() {
       "Kotlin",
       "React.js",
       "Node.js",
-      "MySQL",
+      "Relational Databases (SQL)",
       "Firebase",
       "Git & GitHub",
       "RESTful API",
-      "TypeScript",
-      "Tailwind CSS",
-      "Sequelize",
+      "Agile Methodology",
+      "Creative Problem Solving",
       "Arduino/IoT",
     ],
   };
