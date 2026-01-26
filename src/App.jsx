@@ -5,13 +5,13 @@ import { collection, getDocs } from "firebase/firestore";
 import "./App.css";
 
 // Import Components
-import Particles from "./components/Particles";
+import Particles from "./components/Particles/Particles";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Certificates from "./components/Certificates";
-import Contact from "./components/Contact";
+import About from "./components/About/About";
+import Projects from "./components/Projects/Projects";
+import Certificates from "./components/Certificates/Certificates";
+import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
 
 function App() {
