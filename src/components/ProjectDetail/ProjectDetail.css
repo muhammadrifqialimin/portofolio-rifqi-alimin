@@ -1,0 +1,315 @@
+/* --- src/components/ProjectDetail/ProjectDetail.css --- */
+
+.pd-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.pd-modal {
+  background: #1a0505;
+  border: 1px solid #4a0d0d;
+  width: 100%;
+  max-width: 1300px;
+  height: 85vh;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 1);
+  display: flex;
+  flex-direction: row;
+}
+
+.pd-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #ffcccc;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: 0.3s;
+}
+
+.pd-close-btn:hover {
+  background: #800000;
+  transform: rotate(90deg);
+  color: white;
+}
+
+/* --- KOLOM KIRI --- */
+.pd-image-section {
+  flex: 55%;
+  background-color: #0a0202;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  border-right: 1px solid #2b0a0a;
+}
+
+.pd-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.pd-image-section:hover .pd-image {
+  transform: scale(1.03);
+}
+
+/* --- KOLOM KANAN (DIPERBAIKI UNTUK STICKY FOOTER) --- */
+.pd-content-section {
+  flex: 45%;
+  color: #cccccc;
+  /* HAPUS padding di sini, pindahkan ke anak */
+  padding: 0;
+  /* Buat Flex Column agar bisa bagi ruang */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+
+/* 1. AREA SCROLLABLE (Header + Content) */
+.pd-scrollable-content {
+  flex: 1; /* Mengisi sisa ruang yang tersedia */
+  overflow-y: auto; /* Scroll hanya di area ini */
+  padding: 40px 40px 20px 40px; /* Padding dipindah ke sini */
+}
+
+/* 2. FOOTER STICKY (Tidak ikut scroll) */
+.pd-footer {
+  flex-shrink: 0; /* Jangan mengecil */
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 25px 40px; /* Padding khusus footer */
+  background: #1f0606; /* Warna sedikit beda biar kelihatan terpisah */
+  border-top: 1px solid #4a0d0d;
+  z-index: 5;
+}
+
+/* Header */
+.pd-header {
+  margin-bottom: 25px;
+  padding-right: 40px;
+}
+
+.pd-title {
+  font-size: 2.4rem;
+  margin: 0;
+  color: #ffffff;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.pd-subtitle {
+  font-size: 1.25rem;
+  color: #ff7a7a;
+  margin: 8px 0 15px 0;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.pd-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.pd-date {
+  color: #aaaaaa;
+  font-size: 0.95rem;
+  background: #2b0a0a;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #4a0d0d;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pd-date::before {
+  content: "📅";
+  font-size: 0.9rem;
+}
+
+.pd-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.pd-tech-tag {
+  background: #1f0707;
+  color: #ffc0c0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid #4a0d0d;
+  font-weight: 500;
+}
+
+.pd-description-container {
+  /* margin bottom dihapus agar scroll pas */
+}
+
+.pd-description {
+  color: #d6d6d6;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin-bottom: 25px;
+  white-space: pre-line;
+}
+
+.pd-additional-section {
+  margin-bottom: 10px; /* Jarak bawah sedikit */
+  padding: 25px;
+  background: #130404;
+  border-radius: 12px;
+  border: 1px dashed #4a0d0d;
+}
+
+.pd-additional-title {
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pd-additional-title::before {
+  content: "📝";
+}
+
+/* Tombol */
+.pd-btn {
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.pd-btn-primary {
+  background: linear-gradient(135deg, #b30000, #800000);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(179, 0, 0, 0.3);
+}
+
+.pd-btn-primary:hover {
+  background: linear-gradient(135deg, #ff0000, #b30000);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+}
+
+.pd-btn-secondary {
+  background: transparent;
+  color: #e0e0e0;
+  border: 2px solid #4a0d0d;
+}
+
+.pd-btn-secondary:hover {
+  background: #2b0a0a;
+  border-color: #800000;
+  transform: translateY(-3px);
+  color: white;
+}
+
+.pd-git-group {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+/* Scrollbar pada pd-scrollable-content */
+.pd-scrollable-content::-webkit-scrollbar {
+  width: 6px;
+}
+.pd-scrollable-content::-webkit-scrollbar-track {
+  background: #1a0505;
+}
+.pd-scrollable-content::-webkit-scrollbar-thumb {
+  background: #4a0d0d;
+  border-radius: 10px;
+}
+.pd-scrollable-content::-webkit-scrollbar-thumb:hover {
+  background: #800000;
+}
+
+/* --- RESPONSIF MOBILE --- */
+@media (max-width: 900px) {
+  .pd-modal {
+    flex-direction: column;
+    height: 95vh;
+    max-height: none;
+    max-width: 100%;
+  }
+
+  .pd-image-section {
+    flex: none;
+    width: 100%;
+    height: 280px;
+    border-right: none;
+    border-bottom: 1px solid #2b0a0a;
+  }
+
+  .pd-content-section {
+    flex: 1;
+    width: 100%;
+    padding: 0; /* Reset padding container */
+  }
+
+  .pd-scrollable-content {
+    padding: 25px; /* Padding di dalam */
+  }
+
+  .pd-footer {
+    padding: 20px 25px; /* Padding footer mobile */
+    flex-direction: column;
+  }
+
+  .pd-close-btn {
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .pd-title {
+    font-size: 1.8rem;
+  }
+  .pd-subtitle {
+    font-size: 1.1rem;
+  }
+  .pd-btn {
+    width: 100%;
+  }
+}
