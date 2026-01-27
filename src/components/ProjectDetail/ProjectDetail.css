@@ -1,5 +1,6 @@
 /* --- src/components/ProjectDetail/ProjectDetail.css --- */
 
+/* 1. Overlay (Latar Belakang) */
 .pd-overlay {
   position: fixed;
   top: 0;
@@ -15,20 +16,22 @@
   backdrop-filter: blur(8px);
 }
 
+/* 2. Kotak Modal Utama */
 .pd-modal {
   background: #1a0505;
   border: 1px solid #4a0d0d;
   width: 100%;
   max-width: 1300px;
-  height: 85vh;
+  height: 85vh; /* Tinggi Desktop */
   border-radius: 16px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 1);
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Desktop: Kiri-Kanan */
 }
 
+/* 3. Tombol Close */
 .pd-close-btn {
   position: absolute;
   top: 20px;
@@ -53,7 +56,7 @@
   color: white;
 }
 
-/* --- KOLOM KIRI --- */
+/* --- KOLOM KIRI: GAMBAR --- */
 .pd-image-section {
   flex: 55%;
   background-color: #0a0202;
@@ -76,39 +79,38 @@
   transform: scale(1.03);
 }
 
-/* --- KOLOM KANAN (DIPERBAIKI UNTUK STICKY FOOTER) --- */
+/* --- KOLOM KANAN: KONTEN + FOOTER --- */
 .pd-content-section {
   flex: 45%;
   color: #cccccc;
-  /* HAPUS padding di sini, pindahkan ke anak */
   padding: 0;
-  /* Buat Flex Column agar bisa bagi ruang */
+  /* Setup Flex Column untuk Sticky Footer */
   display: flex;
   flex-direction: column;
   position: relative;
   height: 100%;
 }
 
-/* 1. AREA SCROLLABLE (Header + Content) */
+/* 1. AREA SCROLLABLE (Header + Deskripsi) */
 .pd-scrollable-content {
-  flex: 1; /* Mengisi sisa ruang yang tersedia */
-  overflow-y: auto; /* Scroll hanya di area ini */
-  padding: 40px 40px 20px 40px; /* Padding dipindah ke sini */
+  flex: 1; /* Mengisi sisa ruang */
+  overflow-y: auto; /* Scroll bar hanya di area teks */
+  padding: 40px 40px 20px 40px;
 }
 
-/* 2. FOOTER STICKY (Tidak ikut scroll) */
+/* 2. FOOTER STICKY (Tombol) */
 .pd-footer {
   flex-shrink: 0; /* Jangan mengecil */
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-  padding: 25px 40px; /* Padding khusus footer */
-  background: #1f0606; /* Warna sedikit beda biar kelihatan terpisah */
+  padding: 25px 40px;
+  background: #1f0606;
   border-top: 1px solid #4a0d0d;
   z-index: 5;
 }
 
-/* Header */
+/* Typography & Elements */
 .pd-header {
   margin-bottom: 25px;
   padding-right: 40px;
@@ -170,10 +172,6 @@
   font-weight: 500;
 }
 
-.pd-description-container {
-  /* margin bottom dihapus agar scroll pas */
-}
-
 .pd-description {
   color: #d6d6d6;
   line-height: 1.8;
@@ -183,7 +181,7 @@
 }
 
 .pd-additional-section {
-  margin-bottom: 10px; /* Jarak bawah sedikit */
+  margin-bottom: 10px;
   padding: 25px;
   background: #130404;
   border-radius: 12px;
@@ -203,7 +201,7 @@
   content: "📝";
 }
 
-/* Tombol */
+/* Buttons */
 .pd-btn {
   padding: 14px 30px;
   border-radius: 8px;
@@ -250,7 +248,7 @@
   flex: 1;
 }
 
-/* Scrollbar pada pd-scrollable-content */
+/* Scrollbar Custom */
 .pd-scrollable-content::-webkit-scrollbar {
   width: 6px;
 }
@@ -265,51 +263,78 @@
   background: #800000;
 }
 
-/* --- RESPONSIF MOBILE --- */
+/* ========================================= */
+/* RESPONSIF MOBILE (PERBAIKAN)        */
+/* ========================================= */
 @media (max-width: 900px) {
   .pd-modal {
-    flex-direction: column;
-    height: 95vh;
+    flex-direction: column; /* Ubah jadi Atas-Bawah */
+    height: 92vh; /* Tinggi pas di layar HP */
     max-height: none;
     max-width: 100%;
+    margin: 10px;
   }
 
+  /* 1. Bagian GAMBAR (Atas) */
   .pd-image-section {
-    flex: none;
+    flex: none; /* Jangan flex, fix tinggi */
     width: 100%;
-    height: 280px;
+    height: 220px;
     border-right: none;
     border-bottom: 1px solid #2b0a0a;
   }
 
+  /* 2. KONTAINER UTAMA KANAN (Sekarang di Bawah) */
   .pd-content-section {
-    flex: 1;
+    flex: 1; /* Ambil SISA ruang tinggi */
     width: 100%;
-    padding: 0; /* Reset padding container */
-  }
+    padding: 0;
 
-  .pd-scrollable-content {
-    padding: 25px; /* Padding di dalam */
-  }
-
-  .pd-footer {
-    padding: 20px 25px; /* Padding footer mobile */
+    /* KUNCI: Flex column & Hide overflow agar tidak tembus layar */
+    display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
+  /* 3. AREA TEKS (Tengah - Scrollable) */
+  .pd-scrollable-content {
+    flex: 1; /* Ambil ruang antara gambar dan footer */
+    overflow-y: auto; /* Scroll cuma di sini */
+    padding: 20px;
+  }
+
+  /* 4. FOOTER (Bawah - Sticky) */
+  .pd-footer {
+    flex: none; /* Jangan gepeng */
+    width: 100%;
+    padding: 15px 20px;
+    background: #1f0606;
+    border-top: 1px solid #4a0d0d;
+    flex-direction: row; /* Tombol tetap jejer samping */
+    z-index: 10;
+  }
+
+  /* Tombol X Close */
   .pd-close-btn {
-    top: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.7);
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.8);
   }
 
+  /* Penyesuaian Ukuran Font */
   .pd-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   .pd-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
+
+  /* Tombol Responsif */
   .pd-btn {
-    width: 100%;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    flex: 1;
   }
 }
