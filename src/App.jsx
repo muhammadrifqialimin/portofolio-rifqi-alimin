@@ -32,7 +32,7 @@ function App() {
     image: "/images/image.png",
 
     cvUrl:
-      "https://drive.google.com/file/d/1dtHzgI-36FPh51Tg6EcF4seTB47z8std/view?usp=sharing",
+      "https://drive.google.com/file/d/17UnT0GwhtMtHxk_8jMt1BeDjUn4Zw5V9/view?usp=sharing",
     technologies: [
       "Kotlin",
       "React.js",
