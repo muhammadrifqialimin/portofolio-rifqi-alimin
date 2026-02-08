@@ -1,7 +1,163 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import "./about.css";
 
 function About({ data, fadeInUp, staggerContainer }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoSliding, setIsAutoSliding] = useState(true);
+  const [showDragHint, setShowDragHint] = useState(true);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const sliderRef = useRef(null);
+  const intervalRef = useRef(null);
+
+  const images = data.images || [data.image];
+  const validImages = images.filter((img) => img && img.trim() !== "");
+
+  const goToSlide = (index, direction = 0) => {
+    if (validImages.length <= 1) return;
+
+    const newIndex = (index + validImages.length) % validImages.length;
+    setCurrentSlide(newIndex);
+
+    resetAutoSlide();
+
+    setShowDragHint(false);
+  };
+
+  const nextSlide = () => {
+    goToSlide(currentSlide + 1, 1);
+  };
+
+  const prevSlide = () => {
+    goToSlide(currentSlide - 1, -1);
+  };
+
+  const startAutoSlide = () => {
+    if (validImages.length <= 1 || !isAutoSliding) return;
+
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    intervalRef.current = setInterval(() => {
+      nextSlide();
+    }, 4000);
+  };
+
+  const resetAutoSlide = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    startAutoSlide();
+  };
+
+  const handleDragStart = (e) => {
+    const clientX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
+    setDragStartX(clientX);
+    setIsDragging(true);
+    e.preventDefault();
+  };
+
+  const handleDragEnd = (e) => {
+    if (!isDragging) return;
+
+    const clientX = e.type.includes("touch")
+      ? e.changedTouches
+        ? e.changedTouches[0].clientX
+        : dragStartX
+      : e.clientX;
+
+    const dragDistance = clientX - dragStartX;
+    const threshold = 50;
+
+    if (Math.abs(dragDistance) > threshold) {
+      if (dragDistance > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+
+    setIsDragging(false);
+    setShowDragHint(false);
+  };
+
+  useEffect(() => {
+    if (validImages.length > 1) {
+      startAutoSlide();
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [validImages.length, isAutoSliding]);
+
+  useEffect(() => {
+    if (showDragHint) {
+      const timer = setTimeout(() => {
+        setShowDragHint(false);
+      }, 6000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showDragHint]);
+
+  useEffect(() => {
+    const handleMouseEnter = () => {
+      setIsAutoSliding(false);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+
+    const handleMouseLeave = () => {
+      setIsAutoSliding(true);
+      startAutoSlide();
+    };
+
+    const sliderElement = sliderRef.current;
+    if (sliderElement && validImages.length > 1) {
+      sliderElement.addEventListener("mouseenter", handleMouseEnter);
+      sliderElement.addEventListener("mouseleave", handleMouseLeave);
+      sliderElement.addEventListener("touchstart", handleMouseEnter);
+      sliderElement.addEventListener("touchend", handleMouseLeave);
+
+      return () => {
+        sliderElement.removeEventListener("mouseenter", handleMouseEnter);
+        sliderElement.removeEventListener("mouseleave", handleMouseLeave);
+        sliderElement.removeEventListener("touchstart", handleMouseEnter);
+        sliderElement.removeEventListener("touchend", handleMouseLeave);
+      };
+    }
+  }, [validImages.length]);
+
+  if (validImages.length === 0) {
+    return (
+      <section id="about" className="about-section">
+        <div className="center-container">
+          <motion.div
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h2 className="section-title">About Me</h2>
+            <div className="section-divider"></div>
+            <p className="section-description">
+              Explore my professional journey and portfolio of work below.
+            </p>
+          </motion.div>
+          <p>No images available</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="about" className="about-section">
       <div className="center-container">
@@ -27,10 +183,88 @@ function About({ data, fadeInUp, staggerContainer }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="image-wrapper">
-              <img src={data.image} alt={data.name} />
-              <div className="image-glow"></div>
-            </div>
+            {validImages.length > 0 && (
+              <div
+                className="image-slider-container"
+                ref={sliderRef}
+                onMouseDown={handleDragStart}
+                onMouseUp={handleDragEnd}
+                onMouseLeave={() => setIsDragging(false)}
+                onTouchStart={handleDragStart}
+                onTouchEnd={handleDragEnd}
+              >
+                {/* Render semua gambar */}
+                {validImages.map((imgSrc, index) => (
+                  <div
+                    key={index}
+                    className={`slide-wrapper ${index === currentSlide ? "active" : ""}`}
+                    style={{
+                      transition: isDragging
+                        ? "none"
+                        : "opacity 1s ease-in-out",
+                    }}
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`${data.name} - Photo ${index + 1}`}
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                        console.warn(`Failed to load image: ${imgSrc}`);
+                      }}
+                    />
+                  </div>
+                ))}
+
+                {/* Efek glow */}
+                <div className="image-glow"></div>
+
+                {/* Drag hint (hanya muncul di awal) */}
+                {showDragHint && validImages.length > 1 && (
+                  <div className="drag-hint">
+                    <svg
+                      className="drag-hint-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 10L12 15L17 10"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M12 4V14"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Drag left/right to navigate
+                  </div>
+                )}
+
+                {/* Indicators minimal (hanya titik-titik) */}
+                {validImages.length > 1 && (
+                  <div className="image-slider-indicators">
+                    {validImages.map((_, index) => (
+                      <div
+                        key={index}
+                        className={`slider-indicator ${index === currentSlide ? "active" : ""}`}
+                        onClick={() => {
+                          goToSlide(index);
+                          setShowDragHint(false);
+                        }}
+                        title={`View photo ${index + 1}`}
+                        aria-label={`Go to photo ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </motion.div>
 
           <motion.div

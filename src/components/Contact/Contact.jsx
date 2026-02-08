@@ -13,7 +13,7 @@ function Contact({ contactData, fadeInUp, staggerContainer }) {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="section-title">Get In Touch</h2>
+          <h2 className="section-title">Contact</h2>
           <div className="section-divider"></div>
           <p className="section-description">
             Let's connect and create something amazing together
@@ -29,14 +29,13 @@ function Contact({ contactData, fadeInUp, staggerContainer }) {
         >
           {/* Kolom Kiri: Info & Social Links */}
           <motion.div className="contact-info" variants={fadeInUp}>
-            <h3 className="contact-title">Connect with me</h3>
+            <h3 className="contact-title">Terhubunglah dengan saya</h3>
             <p className="contact-description">
-              I'm always open to discussing new opportunities, interesting
-              projects, or just chatting about technology.
+              Saya selalu terbuka untuk membicarakan peluang baru, proyek
+              menarik, atau sekadar berbincang tentang teknologi.
             </p>
 
             <div className="contact-links">
-              {/* GitHub */}
               <a
                 href={contactData.github}
                 target="_blank"
@@ -89,7 +88,7 @@ function Contact({ contactData, fadeInUp, staggerContainer }) {
 
           {/* Kolom Kanan: Contact Form */}
           <motion.div className="contact-form" variants={fadeInUp}>
-            <h3 className="form-title">Send a message</h3>
+            <h3 className="form-title">Kirim pesan</h3>
             <form className="form">
               <div className="form-group">
                 <input

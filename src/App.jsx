@@ -20,19 +20,28 @@ function App() {
   const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Data Statis (About Me)
+  // Data Statis (About Me) - SEMUA GAMBAR DI SINI
   const aboutData = {
     name: "Muhammad Rifqi Alimin",
-    title: "Full Stack Developer",
+    title: "Web Developer",
     description:
-      "As a Full Stack Developer, I combine robust technical skills in JavaScript and Kotlin with a creative approach to product development. By viewing challenges from diverse perspectives, I transform innovative concepts into functional digital solutions. Dedicated to efficiency and quality, my goal is to build modern technology that delivers real, meaningful value to its users.",
-    bio: "Dedicated to bridging complex ideas into functional, high-impact digital solutions.",
+      "Sebagai Web Developer, saya mengembangkan sistem berbasis web menggunakan JavaScript dan teknologi pendukungnya, serta memiliki pengalaman dalam pengembangan aplikasi Android menggunakan Kotlin. Dengan pendekatan yang terstruktur dan berorientasi pada pengguna, saya berupaya membangun solusi digital yang fungsional, efisien, dan bernilai.",
+    bio: "Berkomitmen untuk mengembangkan solusi digital yang fungsional, terstruktur, dan sesuai dengan kebutuhan pengguna.",
 
-    // PERBAIKAN: Path gambar menggunakan "/" agar terbaca di Vercel (Folder Public)
-    image: "/images/image.png",
+    // ARRAY GAMBAR UNTUK SLIDER - SEMUA GAMBAR DI SINI
+    images: [
+      "https://i.postimg.cc/sfLWQF0Z/gambar-1.jpg",
+      "https://i.postimg.cc/fk4kHN6f/gambar-2.jpg",
+      "https://i.postimg.cc/vHTSd6cq/gambar-3.jpg",
+      "https://i.postimg.cc/V6rC4DJ6/image.jpg ",
+      "https://i.postimg.cc/Kj74sVxR/gambar-5.png",
+    ],
+
+    // Tetap pertahankan properti image untuk kompatibilitas
+    image: "https://i.postimg.cc/sfLWQF0Z/gambar-1.jpg",
 
     cvUrl:
-      "https://drive.google.com/file/d/17UnT0GwhtMtHxk_8jMt1BeDjUn4Zw5V9/view?usp=sharing",
+      "https://drive.google.com/file/d/1paBA3dxUGLOmTPXzIitVj_1mowUormMC/view?usp=sharing",
     technologies: [
       "Kotlin",
       "React.js",
@@ -41,9 +50,7 @@ function App() {
       "Firebase",
       "Git & GitHub",
       "RESTful API",
-      "Agile Methodology",
-      "Creative Problem Solving",
-      "Arduino/IoT",
+      "Android SDK",
     ],
   };
 
@@ -92,11 +99,7 @@ function App() {
     <div className="app-container">
       <Particles />
 
-      {/* Navbar menerima nama untuk logo */}
       <Navbar name={aboutData.name} />
-
-      {/* --- BAGIAN PENTING: SECTION DENGAN ID --- */}
-      {/* Navbar mencari ID ini ("hero", "about", dll) untuk tujuan scroll */}
 
       <section id="hero">
         <Hero fadeInUp={fadeInUp} />

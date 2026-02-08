@@ -1,0 +1,382 @@
+/* about.css - Styles khusus untuk About Section - Clean Version */
+
+/* About Section Container */
+.about-section {
+  background: transparent;
+  width: 100%;
+}
+
+/* Container Utama About */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Pembagian: Foto 1 bagian, Teks 2 bagian */
+  gap: 4rem;
+  align-items: stretch; /* Agar tinggi kolom kiri & kanan sama persis */
+  width: 100%;
+  position: relative;
+}
+
+/* Kolom Kiri (Wadah Foto) */
+.about-image {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Tengah secara horizontal */
+  align-items: center; /* Tengah secara vertikal */
+}
+
+/* ==============================================
+   STYLE UNTUK IMAGE SLIDER - CLEAN VERSION
+   ============================================== */
+.image-slider-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow, 0 10px 30px rgba(0, 0, 0, 0.5));
+  cursor: grab; /* Cursor menunjukkan bisa drag */
+  user-select: none; /* Mencegah seleksi teks saat drag */
+}
+
+.image-slider-container:active {
+  cursor: grabbing; /* Cursor saat sedang drag */
+}
+
+/* Wrapper untuk setiap slide gambar */
+.slide-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Gambar dalam slider */
+.slide-wrapper img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* Memastikan gambar penuh tanpa gepeng */
+  object-position: center center; /* Fokus crop ambil tengah-tengah */
+  transition:
+    filter 1s ease-in-out,
+    transform 0.5s ease; /* Tambah transform untuk efek drag */
+}
+
+/* Class untuk gambar aktif */
+.slide-wrapper.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Efek glow pada gambar */
+.image-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom right, #ff0000, transparent);
+  opacity: 0.1;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ==============================================
+   STYLE UNTUK INDICATOR MINIMAL (titik-titik transparan)
+   ============================================== */
+.image-slider-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 3;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  margin: 0 40px;
+}
+
+.slider-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-indicator.active {
+  background-color: var(--accent);
+  transform: scale(1.3);
+}
+
+.slider-indicator:hover {
+  background-color: rgba(255, 58, 58, 0.6);
+}
+
+/* ==============================================
+   STYLE UNTUK DRAG HINT (hanya muncul di awal)
+   ============================================== */
+.drag-hint {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeInOut 6s ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.drag-hint-icon {
+  width: 16px;
+  height: 16px;
+  animation: swipe 2s ease-in-out infinite;
+}
+
+@keyframes swipe {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Kolom Kanan (Teks dan Informasi) */
+.about-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Nama di About */
+.about-name {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+/* Title/Jabatan di About */
+.about-title {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Deskripsi singkat */
+.about-description {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  width: 100%;
+  line-height: 1.7;
+}
+
+/* Bio/Detail About */
+.about-bio {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  width: 100%;
+  line-height: 1.6;
+}
+
+/* Button Download CV */
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  margin-bottom: 2rem;
+}
+
+.cv-button:hover {
+  background: var(--gradient-red);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* Icon Download */
+.download-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Judul Tech Stack */
+.tech-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  width: 100%;
+  text-align: left;
+}
+
+/* Grid Tech Stack */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Item Tech Stack */
+.tech-item {
+  background: rgba(255, 58, 58, 0.1);
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 58, 58, 0.2);
+  transition: all 0.3s;
+}
+
+.tech-item:hover {
+  background: var(--gradient-red);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design untuk About Section */
+@media (max-width: 992px) {
+  /* Ubah layout menjadi satu kolom di tablet */
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    gap: 2rem;
+  }
+
+  /* Atur ulang kolom gambar untuk mobile */
+  .about-image {
+    display: flex;
+    width: 100%;
+    max-width: 400px; /* Batas lebar maksimal di HP */
+  }
+
+  /* Hapus absolute position di mobile */
+  .image-slider-container {
+    position: relative;
+    height: 400px; /* Tentukan tinggi fix untuk HP */
+    width: 100%;
+  }
+
+  /* Sembunyikan drag hint di mobile */
+  .drag-hint {
+    display: none;
+  }
+
+  /* Atur teks untuk mobile */
+  .about-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Atur judul tech stack untuk mobile */
+  .tech-title {
+    text-align: center;
+  }
+
+  /* Atur grid tech stack untuk mobile */
+  .tech-grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-name {
+    font-size: 1.8rem;
+  }
+
+  .about-title {
+    font-size: 1.1rem;
+  }
+
+  .image-slider-container {
+    height: 350px;
+  }
+
+  .image-slider-indicators {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjustments untuk layar sangat kecil */
+  .about-name {
+    font-size: 1.6rem;
+  }
+
+  .about-title {
+    font-size: 1rem;
+  }
+
+  .about-description {
+    font-size: 1rem;
+  }
+
+  .image-slider-container {
+    height: 300px;
+  }
+
+  /* Perkecil indicator di mobile */
+  .slider-indicator {
+    width: 5px;
+    height: 5px;
+  }
+
+  .image-slider-indicators {
+    gap: 6px;
+    padding: 6px;
+    margin: 0 15px;
+  }
+}

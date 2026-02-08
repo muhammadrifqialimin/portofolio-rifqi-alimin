@@ -17,7 +17,7 @@ function Hero({ fadeInUp }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Hi, I'm <span className="highlight">Muhammad Rifqi Alimin</span>
+          Hi, Saya <span className="highlight">Muhammad Rifqi Alimin</span>
         </motion.h1>
         <motion.p
           className="hero-subtitle"
@@ -25,8 +25,8 @@ function Hero({ fadeInUp }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          A Full-stack Developer focused on building innovative digital
-          solutions through code and creativity.
+          Web Developer yang berfokus pada pengembangan solusi digital yang
+          fungsional dan mudah digunakan.
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
