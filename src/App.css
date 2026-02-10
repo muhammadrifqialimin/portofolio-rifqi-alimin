@@ -378,6 +378,117 @@ section {
   color: white;
 }
 
+/* Tambahan untuk Sub-sections di Projects */
+.projects-subsection {
+  width: 100%;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subsection-title {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  align-self: flex-start; /* Judul rata kiri biar beda */
+  padding-left: 1rem;
+  border-left: 4px solid var(--accent); /* Aksen garis merah di kiri judul */
+  width: 100%;
+  text-align: left;
+}
+
+/* Divider tipis pemisah antar Main dan Additional (jika ingin ada jarak lebih jelas) */
+.subsection-divider {
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  margin: 0 auto 4rem auto;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .subsection-title {
+    font-size: 1.5rem;
+    text-align: center; /* Di HP judul tengah lagi biar rapi */
+    align-self: center;
+    border-left: none;
+    border-bottom: 3px solid var(--accent);
+    padding-left: 0;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    width: auto;
+  }
+}
+
+/* --- Project Tabs Styling --- */
+.project-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 58, 58, 0.1);
+  display: inline-flex; /* Agar lebar container mengikuti konten */
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 58, 58, 0.05);
+}
+
+/* Style untuk Tab yang AKTIF */
+.tab-btn.active {
+  background: var(--gradient-red);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 58, 58, 0.3);
+}
+
+/* Style untuk pesan kosong */
+.no-projects {
+  grid-column: 1 / -1; /* Mengisi lebar penuh grid */
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 2rem;
+  font-style: italic;
+}
+
+/* Responsive Tabs */
+@media (max-width: 768px) {
+  .project-tabs {
+    width: 100%;
+    display: flex;
+  }
+
+  .tab-btn {
+    flex: 1; /* Di HP tombolnya akan membagi lebar sama rata */
+    font-size: 0.9rem;
+    padding: 0.75rem 0.5rem;
+  }
+}
+
 /* Certificates Section */
 .certificates-section {
   background: transparent;

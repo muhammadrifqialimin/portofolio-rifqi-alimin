@@ -25,13 +25,13 @@ function App() {
     name: "Muhammad Rifqi Alimin",
     title: "Web Developer",
     description:
-      "Sebagai Web Developer, saya mengembangkan sistem berbasis web menggunakan JavaScript dan teknologi pendukungnya, serta memiliki pengalaman dalam pengembangan aplikasi Android menggunakan Kotlin. Dengan pendekatan yang terstruktur dan berorientasi pada pengguna, saya berupaya membangun solusi digital yang fungsional, efisien, dan bernilai.",
+      "Halo! Saya mahasiswa Universitas Muhammadiyah Yogyakarta yang sedang mendalami dunia Web Development. Saya menikmati proses merancang website yang tidak hanya estetis, tetapi juga fungsional dan dinamis. Berbekal ilmu Interaksi Manusia Komputer dan Pengembangan Web, saya berusaha menciptakan pengalaman pengguna yang optimal. Saat ini saya terus mengasah skill teknis dan kemampuan Bahasa Inggris untuk berkembang di industri teknologi.",
     bio: "Berkomitmen untuk mengembangkan solusi digital yang fungsional, terstruktur, dan sesuai dengan kebutuhan pengguna.",
 
     // ARRAY GAMBAR UNTUK SLIDER - SEMUA GAMBAR DI SINI
     images: [
-      "https://i.postimg.cc/sfLWQF0Z/gambar-1.jpg",
       "https://i.postimg.cc/fk4kHN6f/gambar-2.jpg",
+      "https://i.postimg.cc/sfLWQF0Z/gambar-1.jpg",
       "https://i.postimg.cc/vHTSd6cq/gambar-3.jpg",
       "https://i.postimg.cc/V6rC4DJ6/image.jpg ",
       "https://i.postimg.cc/Kj74sVxR/gambar-5.png",
@@ -41,16 +41,17 @@ function App() {
     image: "https://i.postimg.cc/sfLWQF0Z/gambar-1.jpg",
 
     cvUrl:
-      "https://drive.google.com/file/d/1paBA3dxUGLOmTPXzIitVj_1mowUormMC/view?usp=sharing",
+      "https://drive.google.com/file/d/17UnT0GwhtMtHxk_8jMt1BeDjUn4Zw5V9/view?usp=sharing",
     technologies: [
-      "Kotlin",
+      "Next.js",
       "React.js",
+      "HTML5 & CSS3",
+      "JavaScript (ES6+)",
       "Node.js",
       "Relational Databases (SQL)",
       "Firebase",
       "Git & GitHub",
       "RESTful API",
-      "Android SDK",
     ],
   };
 
