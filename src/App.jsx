@@ -30,15 +30,15 @@ function App() {
 
     // ARRAY GAMBAR UNTUK SLIDER - SEMUA GAMBAR DI SINI
     images: [
-      "https://i.postimg.cc/fk4kHN6f/gambar-2.jpg",
-      "https://i.postimg.cc/sfLWQF0Z/gambar-1.jpg",
-      "https://i.postimg.cc/vHTSd6cq/gambar-3.jpg",
-      "https://i.postimg.cc/V6rC4DJ6/image.jpg ",
-      "https://i.postimg.cc/Kj74sVxR/gambar-5.png",
+      "/images/gambar-2.jpeg",
+      "/images/gambar-3.jpeg",
+      "/images/gambar-1.jpeg",
+      "/images/gambar-5.png",
+      "/images/image.jpeg",
     ],
 
     // Tetap pertahankan properti image untuk kompatibilitas
-    image: "https://i.postimg.cc/sfLWQF0Z/gambar-1.jpg",
+    image: "/images/image-2.jpeg",
 
     cvUrl:
       "https://drive.google.com/file/d/17UnT0GwhtMtHxk_8jMt1BeDjUn4Zw5V9/view?usp=sharing",
