@@ -25,7 +25,7 @@ function App() {
     name: "Muhammad Rifqi Alimin",
     title: "Web Developer",
     description:
-      "Halo! Saya mahasiswa Universitas Muhammadiyah Yogyakarta yang sedang mendalami dunia Web Development. Saya menikmati proses merancang website yang tidak hanya estetis, tetapi juga fungsional dan dinamis. Berbekal ilmu Interaksi Manusia Komputer dan Pengembangan Web, saya berusaha menciptakan pengalaman pengguna yang optimal. Saat ini saya terus mengasah skill teknis dan kemampuan Bahasa Inggris untuk berkembang di industri teknologi.",
+      "Halo! Saya Muhammad Rifqi Alimin, mahasiswa Universitas Muhammadiyah Yogyakarta yang berfokus pada Web Development dengan spesialisasi di bidang Backend. Saya sangat menikmati tantangan dalam mengelola logika di balik layar untuk memastikan setiap sistem bekerja dengan performa terbaik. Di samping fokus utama tersebut, saya memiliki rasa ingin tahu yang tinggi untuk terus mencoba tantangan baru di sisi Frontend. Hal ini saya lakukan untuk memperluas wawasan teknis saya, sehingga saya dapat membangun solusi digital yang sinkron dan terintegrasi dengan baik antara sisi server maupun pengguna.",
     bio: "Berkomitmen untuk mengembangkan solusi digital yang fungsional, terstruktur, dan sesuai dengan kebutuhan pengguna.",
 
     // ARRAY GAMBAR UNTUK SLIDER - SEMUA GAMBAR DI SINI
