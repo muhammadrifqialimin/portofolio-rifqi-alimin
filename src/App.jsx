@@ -44,14 +44,16 @@ function App() {
       "https://drive.google.com/file/d/17UnT0GwhtMtHxk_8jMt1BeDjUn4Zw5V9/view?usp=sharing",
     technologies: [
       "Next.js",
-      "React.js",
       "HTML5 & CSS3",
       "JavaScript (ES6+)",
       "Node.js",
-      "Relational Databases (SQL)",
-      "Firebase",
-      "Git & GitHub",
       "RESTful API",
+      "Express.js",
+      "Prisma ORM",
+      "Relational Databases (SQL)",
+      "Git & GitHub",
+      "Firebase",
+      "Postman",
     ],
   };
 
