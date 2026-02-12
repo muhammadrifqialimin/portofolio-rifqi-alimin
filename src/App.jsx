@@ -41,7 +41,7 @@ function App() {
     image: "/images/image-2.jpeg",
 
     cvUrl:
-      "https://drive.google.com/file/d/17UnT0GwhtMtHxk_8jMt1BeDjUn4Zw5V9/view?usp=sharing",
+      "https://drive.google.com/file/d/1EJ6jDvpYC3rf0TTu29etnRrU0RMpywSh/view?usp=sharing",
     technologies: [
       "Next.js",
       "HTML5 & CSS3",
