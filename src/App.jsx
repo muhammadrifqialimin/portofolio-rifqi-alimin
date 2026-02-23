@@ -25,7 +25,7 @@ function App() {
     name: "Muhammad Rifqi Alimin",
     title: "Web Developer",
     description:
-      "Halo! Saya Muhammad Rifqi Alimin, mahasiswa Universitas Muhammadiyah Yogyakarta yang berfokus pada Web Development dengan spesialisasi di bidang Backend. Saya sangat menikmati tantangan dalam mengelola logika di balik layar untuk memastikan setiap sistem bekerja dengan performa terbaik. Di samping fokus utama tersebut, saya memiliki rasa ingin tahu yang tinggi untuk terus mencoba tantangan baru di sisi Frontend. Hal ini saya lakukan untuk memperluas wawasan teknis saya, sehingga saya dapat membangun solusi digital yang sinkron dan terintegrasi dengan baik antara sisi server maupun pengguna.",
+      "Halo! Saya Muhammad Rifqi Alimin, mahasiswa Universitas Muhammadiyah Yogyakarta yang berfokus pada Web Development dengan spesialisasi di bidang Frontend. Saya sangat menikmati tantangan dalam mengelola logika di balik layar untuk memastikan setiap sistem bekerja dengan performa terbaik. Di samping fokus utama tersebut, saya memiliki rasa ingin tahu yang tinggi untuk terus mencoba tantangan baru di sisi Backend. Hal ini saya lakukan untuk memperluas wawasan teknis saya, sehingga saya dapat membangun solusi digital yang sinkron dan terintegrasi dengan baik antara sisi server maupun pengguna.",
     bio: "Berkomitmen untuk mengembangkan solusi digital yang fungsional, terstruktur, dan sesuai dengan kebutuhan pengguna.",
 
     // ARRAY GAMBAR UNTUK SLIDER - SEMUA GAMBAR DI SINI
@@ -41,7 +41,7 @@ function App() {
     image: "/images/image-2.jpeg",
 
     cvUrl:
-      "https://drive.google.com/file/d/1EJ6jDvpYC3rf0TTu29etnRrU0RMpywSh/view?usp=sharing",
+      "https://drive.google.com/file/d/1dtHzgI-36FPh51Tg6EcF4seTB47z8std/view?usp=sharing",
     technologies: [
       "Next.js",
       "HTML5 & CSS3",
@@ -49,7 +49,10 @@ function App() {
       "Node.js",
       "RESTful API",
       "Express.js",
-      "Prisma ORM",
+      "Dart",
+      "PHP",
+      "Laravel",
+      "Flutter",
       "Relational Databases (SQL)",
       "Git & GitHub",
       "Firebase",
