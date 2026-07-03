@@ -8,34 +8,24 @@ function Navbar({ name }) {
     setIsOpen(!isOpen);
   };
 
-  // --- FUNGSI SCROLL MANUAL (LEBIH KUAT) ---
   const handleScroll = (e, targetId) => {
-    e.preventDefault(); // Matikan link bawaan
+    e.preventDefault();
     setIsOpen(false); // Tutup menu
 
-    const element = document.getElementById(targetId);
-
-    if (element) {
-      // 1. Ambil posisi elemen relatif terhadap layar
-      const elementPosition = element.getBoundingClientRect().top;
-      // 2. Ambil posisi scroll saat ini
-      const offsetPosition = elementPosition + window.scrollY - 80; // (-80 untuk kasih jarak Navbar)
-
-      // 3. Paksa Window untuk scroll ke sana
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    } else {
-      console.error(
-        `Element dengan ID "${targetId}" tidak ditemukan! Cek App.jsx.`,
-      );
-    }
+    // Gunakan setTimeout kecil untuk memastikan state menu terupdate dulu
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        // Update URL hash secara manual agar sama dengan native link
+        window.history.pushState(null, "", `#${targetId}`);
+      }
+    }, 100);
   };
 
   const menuVariants = {
-    closed: { opacity: 0, height: 0 },
-    open: { opacity: 1, height: "auto" },
+    closed: { opacity: 0, height: 0, overflow: "hidden" },
+    open: { opacity: 1, height: "auto", overflow: "hidden" },
   };
 
   return (
